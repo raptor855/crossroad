@@ -38,7 +38,7 @@ function dwcs(c){
 			}
 		}cr+='<tr valign="middle">'+o+'</tr>';
 	}
-	if(cr)cr='<form class="gen_item" method="POST" action="?download"><input name="cross" type="hidden" value="'+encodeURIComponent(JSON.stringify(m))+'"><div class="actions"><button class="save_link" name="save_png" type="submit">Картинка</button></div><table class="cross">'+cr+'</table></form>';return cr;
+	if(cr)cr='<form class="gen_item" method="POST" action="?download"><input name="cross" type="hidden" value="'+encodeURIComponent(JSON.stringify(m))+'"><div class="actions"></div><table class="cross">'+cr+'</table></form>';return cr;
 }
 
 function pwrd(s){
