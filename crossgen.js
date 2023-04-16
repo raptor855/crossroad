@@ -8,7 +8,6 @@ function asch(e,y,q){
 	}
 	return false;
 }
-
 function afll(o,n,v){
 	var k,t=new Array();
 	if(!isNaN(o) && !isNaN(n)){
@@ -18,12 +17,11 @@ function afll(o,n,v){
 	}
 	return t;
 }
-
 function sufe(a){
-	for(var j,x,i=a.length;i;j=parseInt(Math.random()*i),x=a[--i],a[i]=a[j],a[j]=x);
+	for(var j,x,i=a.length;i;j=parseInt(Math.random()*i),x=a[--i],a[i]=a[j],a[j]=x)
+		;
 	return a;
-	}
-	
+}
 
 function dwcs(c){
 	var cr='',o='',m=c['crossword'];
@@ -32,17 +30,15 @@ function dwcs(c){
 		for(var i=0;i<m[j].length;i++){
 			if(parseInt(m[j][i])>0){
 				o+='<td class="num">'+m[j][i]+'</td>';
-				}
+			}
 			else if(m[j][i]!=SPACE){
 				o+='<td class="let"><span>'+m[j][i]+'</span></td>';
-				}
-			else{o+='<td></td>';
+			}else{
+				o+='<td></td>';
 			}
-		}
-		cr+='<tr valign="middle">'+o+'</tr>';
+		}cr+='<tr valign="middle">'+o+'</tr>';
 	}
-	if(cr)cr='<form class="gen_item" method="POST" action="?download"><input name="cross" type="hidden" value="'+encodeURIComponent(JSON.stringify(m))+'"><div class="actions"><button class="save_link" name="save_doc" type="submit">Таблица</button><button class="save_link" name="save_png" type="submit">Картинка</button></div><table class="cross">"'+cr+'"</table></form>';
-	return cr;
+	if(cr)cr='<form class="gen_item" method="POST" action="?download"><input name="cross" type="hidden" value="'+encodeURIComponent(JSON.stringify(m))+'"><div class="actions"><button class="save_link" name="save_png" type="submit">Картинка</button></div><table class="cross">'+cr+'</table></form>';return cr;
 }
 
 function pwrd(s){
@@ -66,34 +62,32 @@ function gcd(t){
 	uu+=xf[1];
 	fx+=xf[0];
 	h+="r"+xf.substr(3,2);
-	for(var i in t)
-		if(t.hasOwnProperty(i)){
-			x=false;
-			n++;
-			var y=t[i].split("");
-			y.unshift(n);
-			if(d.length && wp[uu] &&  wp[uu][h].indexOf(fx)){
-				for(var u in d){
-					for(var j in y){
-						var c=asch(y[j],d[u]);
-						if(c!==false){
-							if(d.length>=d[u])p=0;
-							else p=1;
-							if(w=awr(d,u,c,y,j,p) || awr(d,u,c,y,j,1-p)){
-								d=w;
-								x=true;
-								}
-						}if(x)
-							break;
+	for(var i in t)if(t.hasOwnProperty(i)){
+		x=false;
+		n++;
+		var y=t[i].split("");y.unshift(n);
+		if(d.length && wp[uu] &&  wp[uu][h].indexOf(fx)){
+			for(var u in d){
+				for(var j in y){
+					var c=asch(y[j],d[u]);
+					if(c!==false){
+						if(d.length>=d[u])p=0;
+						else p=1;
+						if(w=awr(d,u,c,y,j,p) || awr(d,u,c,y,j,1-p)){
+							d=w;
+							x=true;
+						}
 					}
-					if(x)
-						break;
-				}if(x===false)
-					return false;
-			}else{
-				d.push(y);
+					if(x)break;
 				}
+				if(x)break;
+			}
+			if(x===false)return false;
 		}
+		else{
+			d.push(y);
+		}
+	}
 	return d;
 }
 
@@ -172,38 +166,39 @@ function acls(a,n,d){
 			var x=afll(0,n-1,SPACE);
 			a[k]=a[k].concat(x);
 		}
-	}
-	return a;
+	}return a;
 }
 
 function awr(c1,r1,o1,w1,w3,q1){
-var hh=window.location.host;
-var c=c1,w2=w1,r=parseInt(r1);
-p=parseInt(w3);
-o=parseInt(o1);
-var lt=c[r][o];
-var lw=w2.length;
-var hc=c.length;
-var wc=c[r].length;
-if(lt==SPACE)
-	return false;
-if(q1==1){
-	if(p>r){
-		var ib=p-r;
-		var ta=0;
-	}else{
-		var ta=r-p;
-		var ib=0;
+	var hh=window.location.host;
+	var c=c1,w2=w1,r=parseInt(r1);
+	p=parseInt(w3);
+	o=parseInt(o1);
+	var lt=c[r][o];
+	var lw=w2.length;
+	var hc=c.length;
+	var wc=c[r].length;
+	if(lt==SPACE) 
+		return false;
+	if(q1==1){
+		if(p>r){
+			var ib=p-r;
+			var ta=0;
+		}
+		else{
+			var ta=r-p;
+			var ib=0;
 		}
 		if((lw-p)>(hc-r)){
 			var ia=(lw-p)-(hc-r);
 			var e=hc-1;
-			}
-			else{var e=r+(lw-1)-p;
+		}
+		else{
+			var e=r+(lw-1)-p;
 			var ia=0;
-			}
-			if((hc+ib+ia)>20)
-				return false;
+		}
+		if((hc+ib+ia)>20) 
+			return false;
 		var ex=ib;
 		for(var i=ta;i<=e;i++){
 			if(c[i] && c[i][o]==SPACE){
@@ -214,20 +209,22 @@ if(q1==1){
 			}
 			else if(c[i] && c[i][o]!=w2[ex]){
 				return false;
-				}
-				if(i==ta && i>0 && c[i-1] && c[i-1][o]!=SPACE) 
-					return false;
-				if(i==e && i<hc-1 && c[i+1] && c[i+1][o]!=SPACE) 
-					return false;
+			}
+			if(i==ta && i>0 && c[i-1] && c[i-1][o]!=SPACE)
+				return false;
+			if(i==e && i<hc-1 && c[i+1] && c[i+1][o]!=SPACE) 
+				return false;
 			ex++;
 		}
-		if(ib)c=acls(c,ib,'top');
-		if(ia)c=acls(c,ia,'bottom');
+		if(ib)
+			c=acls(c,ib,'top');
+		if(ia)
+			c=acls(c,ia,'bottom');
 		for(var i=ta;i<ta+lw;i++){
 			c[i][o]=w2[i-ta];
 		}
-		return c;
-	}
+	return c;
+	}	
 	else{
 		if(p>o){
 			var ib=p-o;
@@ -258,14 +255,16 @@ if(q1==1){
 			else if(c[r][i]!=w2[ex]){
 				return false;
 			}
-			if(i==ta && i>0 && c[r] && c[r][i-1]!=SPACE) 
+			if(i==ta && i>0 && c[r] && c[r][i-1]!=SPACE)
 				return false;
 			if(i==e && i<wc-1 && c[r] && c[r][i+1]!=SPACE) 
 				return false;
 			ex++;
 		}
-		if(ib)c=acls(c,ib,'left');
-		if(ia)c=acls(c,ia,'right');
+		if(ib)
+			c=acls(c,ib,'left');
+		if(ia)
+			c=acls(c,ia,'right');
 		for(var i=ta;i<ta+lw;i++){
 			c[r][i]=w2[i-ta];
 		}
