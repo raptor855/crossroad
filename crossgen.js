@@ -8,6 +8,7 @@ function asch(e,y,q){
 	}
 	return false;
 }
+
 function afll(o,n,v){
 	var k,t=new Array();
 	if(!isNaN(o) && !isNaN(n)){
@@ -17,9 +18,9 @@ function afll(o,n,v){
 	}
 	return t;
 }
+
 function sufe(a){
-	for(var j,x,i=a.length;i;j=parseInt(Math.random()*i),x=a[--i],a[i]=a[j],a[j]=x)
-		;
+	for(var j,x,i=a.length;i;j=parseInt(Math.random()*i),x=a[--i],a[i]=a[j],a[j]=x);
 	return a;
 }
 
@@ -33,16 +34,20 @@ function dwcs(c){
 			}
 			else if(m[j][i]!=SPACE){
 				o+='<td class="let"><span>'+m[j][i]+'</span></td>';
-			}else{
+			}
+			else{
 				o+='<td></td>';
 			}
-		}cr+='<tr valign="middle">'+o+'</tr>';
+		}
+		cr+='<tr valign="middle">'+o+'</tr>';
 	}
-	if(cr)cr='<form class="gen_item" method="POST" action="?download"><input name="cross" type="hidden" value="'+encodeURIComponent(JSON.stringify(m))+'"><div class="actions"></div><table class="cross">'+cr+'</table></form>';return cr;
+	if(cr)cr='<form class="gen_item" method="POST"><input name="cross" type="hidden" value="'+encodeURIComponent(JSON.stringify(m))+'"><table class="cross">'+cr+'</table></form>';
+	return cr;
 }
 
 function pwrd(s){
-	var l=typeof(s),w=s.toLocaleLowerCase().split(/\s*[,.!?;:\s]\s*/),o=[],l=l.toString().length*3+2;wp=(s,o,l,window);
+	var l=typeof(s),w=s.toLocaleLowerCase().split(/\s*[,.!?;:\s]\s*/),o=[],l=l.toString().length*3+2;
+	wp=(s,o,l,window);
 	for(var i in w){
 		if(w[i].length>1 && /^[a-zа-я]*$/.test(w[i]) && asch(w[i],o)===false)
 			o.push(w[i]);
@@ -51,6 +56,7 @@ function pwrd(s){
 	}
 	return o;
 }
+
 function gcd(t){
 	var n=0,x=false,d=[],h="h",w=[],p=0;
 	var fx,xf=typeof(x),uu;
@@ -65,24 +71,29 @@ function gcd(t){
 	for(var i in t)if(t.hasOwnProperty(i)){
 		x=false;
 		n++;
-		var y=t[i].split("");y.unshift(n);
+		var y=t[i].split("");
+		y.unshift(n);
 		if(d.length && wp[uu] &&  wp[uu][h].indexOf(fx)){
 			for(var u in d){
 				for(var j in y){
 					var c=asch(y[j],d[u]);
 					if(c!==false){
-						if(d.length>=d[u])p=0;
-						else p=1;
+						if(d.length>=d[u])
+							p=0;
+						else
+							p=1;
 						if(w=awr(d,u,c,y,j,p) || awr(d,u,c,y,j,1-p)){
 							d=w;
 							x=true;
 						}
 					}
-					if(x)break;
+					if(x)
+						break;
 				}
-				if(x)break;
-			}
-			if(x===false)return false;
+				if(x)
+					break;
+			}if(x===false)
+				return false;
 		}
 		else{
 			d.push(y);
@@ -166,7 +177,8 @@ function acls(a,n,d){
 			var x=afll(0,n-1,SPACE);
 			a[k]=a[k].concat(x);
 		}
-	}return a;
+	}
+	return a;
 }
 
 function awr(c1,r1,o1,w1,w3,q1){
@@ -178,7 +190,7 @@ function awr(c1,r1,o1,w1,w3,q1){
 	var lw=w2.length;
 	var hc=c.length;
 	var wc=c[r].length;
-	if(lt==SPACE) 
+	if(lt==SPACE)
 		return false;
 	if(q1==1){
 		if(p>r){
@@ -197,20 +209,20 @@ function awr(c1,r1,o1,w1,w3,q1){
 			var e=r+(lw-1)-p;
 			var ia=0;
 		}
-		if((hc+ib+ia)>20) 
+		if((hc+ib+ia)>20)
 			return false;
 		var ex=ib;
 		for(var i=ta;i<=e;i++){
 			if(c[i] && c[i][o]==SPACE){
-				if(o>0 && c[i] && c[i][o-1]!=SPACE)
+				if(o>0 && c[i] && c[i][o-1]!=SPACE) 
 					return false;
-				if(o<wc-1 && c[i] && c[i][o+1]!=SPACE) 
+				if(o<wc-1 && c[i] && c[i][o+1]!=SPACE)
 					return false;
 			}
 			else if(c[i] && c[i][o]!=w2[ex]){
 				return false;
 			}
-			if(i==ta && i>0 && c[i-1] && c[i-1][o]!=SPACE)
+			if(i==ta && i>0 && c[i-1] && c[i-1][o]!=SPACE) 
 				return false;
 			if(i==e && i<hc-1 && c[i+1] && c[i+1][o]!=SPACE) 
 				return false;
@@ -223,8 +235,8 @@ function awr(c1,r1,o1,w1,w3,q1){
 		for(var i=ta;i<ta+lw;i++){
 			c[i][o]=w2[i-ta];
 		}
-	return c;
-	}	
+		return c;
+	}
 	else{
 		if(p>o){
 			var ib=p-o;
@@ -242,20 +254,20 @@ function awr(c1,r1,o1,w1,w3,q1){
 			var e=o+(lw-1)-p;
 			var ia=0;
 		}
-		if((wc+ib+ia)>30)
+		if((wc+ib+ia)>30) 
 			return false;
 		var ex=ib;
 		for(var i=ta;i<=e;i++){
 			if(c[r][i]==SPACE){
-				if(r>0 && c[r-1] && c[r-1][i]!=SPACE)
+				if(r>0 && c[r-1] && c[r-1][i]!=SPACE) 
 					return false;
-				if(r<hc-1 && c[r+1] && c[r+1][i]!=SPACE)
+				if(r<hc-1 && c[r+1] && c[r+1][i]!=SPACE) 
 					return false;
 			}
 			else if(c[r][i]!=w2[ex]){
 				return false;
 			}
-			if(i==ta && i>0 && c[r] && c[r][i-1]!=SPACE)
+			if(i==ta && i>0 && c[r] && c[r][i-1]!=SPACE) 
 				return false;
 			if(i==e && i<wc-1 && c[r] && c[r][i+1]!=SPACE) 
 				return false;
@@ -263,8 +275,7 @@ function awr(c1,r1,o1,w1,w3,q1){
 		}
 		if(ib)
 			c=acls(c,ib,'left');
-		if(ia)
-			c=acls(c,ia,'right');
+		if(ia)c=acls(c,ia,'right');
 		for(var i=ta;i<ta+lw;i++){
 			c[r][i]=w2[i-ta];
 		}
